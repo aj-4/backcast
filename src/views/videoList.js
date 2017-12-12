@@ -2,16 +2,14 @@ var VideoListView = Backbone.View.extend({
 
   // el:'.list',
 
-  // initialize: function() {
-  //   console.log(this.collection)
-  //   this.render();
-  // },
+  initialize: function() {
+    this.listenTo(this.collection, 'sync', this.render);
+  },
 
   render: function() {
     this.$el.children().detach();
     this.$el.html(this.template());
     this.collection.forEach(this.renderVideoEntry, this);
-
     return this;
   },
 
@@ -21,7 +19,7 @@ var VideoListView = Backbone.View.extend({
   },
 
   template: templateURL('src/templates/videoList.html')
-})
+});
 
 // render: function() {
 //     this.$el.empty();
