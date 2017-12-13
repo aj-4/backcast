@@ -13,7 +13,7 @@ var VideoPlayerView = Backbone.View.extend({
 
   render: function() {
     // console.log('video player view rendered');
-    setTimeout((() => {this.$el.html(this.template(window.selected.attributes))}), 0);
+    setTimeout((() => { this.$el.html(this.template(window.selected.attributes)); }), 0);
     return this;
   },
 

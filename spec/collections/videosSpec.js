@@ -1,24 +1,26 @@
 describe ('VideosCollection', function() {
 
-  xdescribe('when retrieving live data from YouTube', function() {
+  describe('when retrieving live data from YouTube', function() {
     var collection;
 
     beforeEach(function() {
       collection = new Videos(fakeVideoData);
       sinon.spy(Backbone, 'ajax');
-    });
 
+      console.log('before', collection);
+    });
     afterEach(function() {
       Backbone.ajax.restore();
     });
 
     it('should have a search function', function() {
       expect(collection.search).to.be.a('function');
-    });
 
+    });
     it('should initiate an ajax request when search is called', function() {
       collection.search();
       expect(Backbone.ajax).to.have.been.called;
+      console.log('after', collection);
     });
 
     it('should initiate an ajax request when search is called with the specified data', function() {
@@ -28,7 +30,9 @@ describe ('VideosCollection', function() {
 
     it('should convert the fetched data into an array', function() {
       expect(collection.parse).to.be.a('function');
+
       var response = collection.parse({ items: fakeVideoData });
+
       expect(response).to.be.equal(fakeVideoData);
     });
 
