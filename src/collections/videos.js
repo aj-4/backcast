@@ -18,9 +18,8 @@ var Videos = Backbone.Collection.extend({
         'type': 'video'
       },
       success: (val) =>{
-          // console.log((new Videos(val.items).parse({ items: fakeVideoData })));
-          // this.fetchedData = val.items.map
-        this.reset(val.items);
+        // this.reset();
+        this.set(val.items);
       },
       error: function() {
         console.log('You failed :(');
@@ -34,13 +33,4 @@ var Videos = Backbone.Collection.extend({
       return response;
     }
   }
-  // fetchedData: [],
-
-  // feedData: {
-  //   'key': window.YOUTUBE_API_KEY,
-  //   'part': 'snippet',
-  //   'q': 'hack reactor',
-  //   'maxResults': 5,
-  //   'videoEmbeddable': true
-  // }
 });

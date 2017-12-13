@@ -6,8 +6,6 @@ describe ('VideosCollection', function() {
     beforeEach(function() {
       collection = new Videos(fakeVideoData);
       sinon.spy(Backbone, 'ajax');
-
-      console.log('before', collection);
     });
     afterEach(function() {
       Backbone.ajax.restore();
@@ -20,7 +18,6 @@ describe ('VideosCollection', function() {
     it('should initiate an ajax request when search is called', function() {
       collection.search();
       expect(Backbone.ajax).to.have.been.called;
-      console.log('after', collection);
     });
 
     it('should initiate an ajax request when search is called with the specified data', function() {
